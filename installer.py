@@ -152,8 +152,8 @@ def configure_lunarvim():
   # set environment variable
   os.environ["LV_BRANCH"] = "rolling"
   link = "https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/rolling/utils/installer/install.sh"
-  # install lunarvim close process if it hangs for more than 5 minutes and redirect output to /dev/null
-  os.system(f"timeout 5m bash <(curl -s {link}) --install-dependencies -y &")
+
+  os.system(f"bash <(curl -s {link}) --install-dependencies -y")
   # copy lunarvim directory to ~/.config/lunarvim except if git ignored
   copy_config_directory("lvim")
 
@@ -163,6 +163,7 @@ def configure_rustup():
   os.system("rustup default stable")
 
 def main():
+  # update system
   # print banner in blue if terminal supports it
   if os.system("tput colors > /dev/null") == 0:
     print("\033[94m" + banner + "\033[0m")
@@ -170,11 +171,14 @@ def main():
     print(banner)
   # get sudo password
   get_sudo_password()
+  # update system
+  print("Updating system")
+  pipe_password(package_manager + " -Syu --noconfirm")
   # install packages
   for package in packages:
     install_package(package)
 
-  configure_open_vm_tools()
+  # configure_open_vm_tools()
   configure_rustup()
   configure_git()
   configure_zsh()
@@ -182,6 +186,12 @@ def main():
   configure_lunarvim()
   configure_autostart()
   configure_ulauncher()
+
+  # install pentest tools
+  print("Installing pentest tools")
+  for tool in pentest_tools:
+    install_package(tool)
+
 
 
 
