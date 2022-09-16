@@ -1,14 +1,8 @@
 #! /usr/bin/env zsh
 
-ZFILES=( # order is important
-  "functions"
-  "env"
-  "settings"
-  "aliases"
-  "keys"
-  "plugins"
-  "prompt"
-)
+ # order is important
+ZFILES=( "functions" "env" "settings" "aliases" "keys" "plugins" "prompt" )
+
 for ZFILE in $ZFILES
 do
   source "$ZDOTDIR/$ZFILE.zsh"

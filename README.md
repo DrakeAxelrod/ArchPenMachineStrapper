@@ -1,4 +1,5 @@
-# zsh
+
+## zsh
 
 1) create .zshenv in home directory
 

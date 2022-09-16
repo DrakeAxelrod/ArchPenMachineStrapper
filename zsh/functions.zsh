@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#! /usr/bin/env zsh
 
 function cmd_exists() {
   if [ -x "$(command -v $1)" ]; then
@@ -151,8 +151,8 @@ function pathmunge() {
 }
 
 # pacman
-function pacman-packages() {
-  local packages="$(LC_ALL=C paru -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h)"
+function pacman_packages() {
+  local packages="$(LC_ALL=C yay -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h)"
   echo $packages > $XDG_CONFIG_HOME/arch-installed-packages.txt
   echo >> $XDG_CONFIG_HOME/arch-installed-packages.txt
   df -h >> $XDG_CONFIG_HOME/arch-installed-packages.txt

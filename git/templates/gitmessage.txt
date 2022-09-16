@@ -1,0 +1,14 @@
+
+# ------------------------ >8 ------------------------
+# Title:                                         #
+# Add space between title and body
+# Body: *what* and *why* (not *how*).                                  #
+# Co-authored-by Format: Co-authored-by: name <user@users.noreply.github.com>
+# Rules:
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how

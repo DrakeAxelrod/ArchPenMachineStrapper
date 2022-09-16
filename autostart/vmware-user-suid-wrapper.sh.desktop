@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/bin/vmware-user-suid-wrapper.sh
+GenericName[en_US]=
+GenericName=
+Icon=dialog-scripts
+MimeType=
+Name[en_US]=vmware-user-suid-wrapper.sh
+Name=vmware-user-suid-wrapper.sh
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-AutostartScript=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=
