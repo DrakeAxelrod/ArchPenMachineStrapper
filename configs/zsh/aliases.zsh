@@ -129,7 +129,7 @@ alias drm-all="docker system prune -a"
 #alias vi=$EDITOR
 #alias v=$EDITOR
 
-alias _='sudo'
+# alias _='sudo'
 
 # Resource Usage
 alias df='df -kh'

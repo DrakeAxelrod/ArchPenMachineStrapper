@@ -2,9 +2,11 @@ package_manager: yay # or "paru"
 systemd_services:
   - vmtoolsd # VMware Tools
   - vmware-vmblock-fuse # VMware Tools
+  - docker # Docker
 packages:
   general:
     - imwheel # Mouse wheel acceleration
+    - openvpn # VPN
     - keybase-bin # Keybase
     - open-vm-tools # VMware Tools
     - nerd-fonts-jetbrains-mono # Nerd Fonts
@@ -22,6 +24,7 @@ packages:
     - thefuck # Magnificent app which corrects your previous console command
     - rustup # Rust toolchain installer
     - visual-studio-code-bin # Visual Studio Code
+    - docker # Docker
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning
@@ -34,3 +37,14 @@ packages:
     - dirb # Web Content Scanner
     - dirbuster # Web Content Scanner
     - nikto # Web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs
+    - nessus # Vulnerability scanner
+    - wpscan # WordPress vulnerability scanner
+    - wireshark-qt # Network protocol analyzer
+    - wireshark-cli # Network protocol analyzer
+    - tcpdump # Network traffic analyzer
+    - john # Password cracker
+    - gnu-netcat # Networking utility which reads and writes data across networks from the command line
+    - inetutils # Collection of common network programs
+    - net-tools # Collection of common network tools
+    - traceroute # Traces the route taken by packets over an IP network
+    - iputils # Collection of small useful utilities for Linux networking
