@@ -1,12 +1,12 @@
 
-## zsh
+# Archlinux Pentesting Bootstrapper
 
-1) create .zshenv in home directory
+## Dependencies
 
-2) .zshenv contents
-
-```sh
-#! /usr/bin/env zsh
-
-export ZDOTDIR="$HOME/.config/zsh"
-```
+- yay or paru
+- git
+- python
+  - yaml
+  - shutil
+  - os
+  - subprocess

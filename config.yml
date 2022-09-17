@@ -1,0 +1,36 @@
+package_manager: yay # or "paru"
+systemd_services:
+  - vmtoolsd # VMware Tools
+  - vmware-vmblock-fuse # VMware Tools
+packages:
+  general:
+    - imwheel # Mouse wheel acceleration
+    - keybase-bin # Keybase
+    - open-vm-tools # VMware Tools
+    - nerd-fonts-jetbrains-mono # Nerd Fonts
+    - git # Git
+    - zsh # Terminal shell (Zsh)
+    - kitty # Terminal emulator (Kitty)
+    - neovim # Text editor (Neovim)
+    - bat # Cat clone with syntax highlighting and Git integration
+    - ripgrep # Line-oriented search tool that recursively searches your current directory for a regex pattern
+    - fd # Simple, fast and user-friendly alternative to find
+    - lsd # The next gen ls command (ls replacement)
+    - grc # Colourize logfiles and command output
+    - ncdu # Disk usage analyzer with an ncurses interface
+    - papirus-icon-theme # Papirus icon theme
+    - thefuck # Magnificent app which corrects your previous console command
+    - rustup # Rust toolchain installer
+    - visual-studio-code-bin # Visual Studio Code
+  pentest_tools:
+    - nmap # Network exploration tool and security / port scanner
+    - vulscan # Nmap NSE script for vulnerability scanning
+    - metasploit # Penetration testing framework
+    - wordlists # Wordlists for password cracking and other security testing
+    - burpsuite  # Web application security testing tool
+    - burpsuite-pro # Burp Suite Professional
+    - sqlmap # Automatic SQL injection and database takeover tool
+    - gobuster # Directory/file, DNS and virtual host busting tool written in Go
+    - dirb # Web Content Scanner
+    - dirbuster # Web Content Scanner
+    - nikto # Web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs
