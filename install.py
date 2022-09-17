@@ -73,15 +73,6 @@ def cp_config_dir(directory) -> None:
   # copy directory to ~/.config/directory except if git ignored
   shutil.copytree(f"configs/{directory}", os.path.expanduser("~/.config/" + directory), dirs_exist_ok=True)
 
-def cp_config_file(file) -> None:
-  """Copy file from configs to home directory
-
-  Args:
-      file (string): file to copy
-  """
-  # copy file to ~ except if git ignored
-  shutil.copy(f"configs/{file}", os.path.expanduser("~/" + file))
-
 # ======================== Configs ======================== #
 def configure_systemd():
   """Configure systemd
@@ -117,7 +108,8 @@ def configure_zsh():
   # change default shell redirect password to stdin if zsh is not default shell
   if os.environ["SHELL"] != "/bin/zsh":
     execute("chsh -s /bin/zsh")
-  cp_config_file(".zshenv")
+  shutil.copyfile("configs/zshenv", os.path.expanduser("~/.zshenv"))
+  
   cp_config_dir("zsh")
 
 def configure_kitty():
