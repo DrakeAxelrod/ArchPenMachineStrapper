@@ -217,6 +217,7 @@ if __name__ == "__main__":
 
     pretty_print("Configuring system")
     systemd()
+
     for func in [git, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty]:
         config_wrapper(func)
 

@@ -1,6 +1,6 @@
 [user]
-	email = drake@draxel.io
-	name = Drake Axelrod
+	# email = 
+	# name = 
 [color]
   # Enable colors in color-supporting terminals
   ui = auto
