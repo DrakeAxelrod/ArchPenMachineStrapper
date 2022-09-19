@@ -20,3 +20,7 @@ cd {this repo}
 # from root of project
 python install.py
 ```
+
+## Notes
+
+change the git config file to use your username and email :D
