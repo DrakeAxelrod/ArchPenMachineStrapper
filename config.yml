@@ -5,6 +5,7 @@ systemd_services:
   - docker # Docker
 packages:
   general:
+    - ulauncher # Ulauncher
     - imwheel # Mouse wheel acceleration
     - openvpn # VPN
     - keybase-bin # Keybase

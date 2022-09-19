@@ -51,7 +51,7 @@ def check_package(package) -> bool:
     global config
     # check if error code then package is not installed
     try:
-        execute(config["package_manager"] + " -Q " + package)
+        execute(config["package_manager"] + " -Q " + package + " > /dev/null")
         return True
     except:
         return False
@@ -120,6 +120,7 @@ def autostart_programs():
 
 # configure ulauncher
 def ulauncher():
+  if check_package("ulauncher"):
     # copy config directories
     cp_config_dir("ulauncher")
 
@@ -127,38 +128,42 @@ def ulauncher():
 # configure git
 def git():
     """Configure git"""
-    # copy git directory to ~/.config/git except if git ignored
-    cp_config_dir("git")
+    if check_package("git"):
+      # copy git directory to ~/.config/git except if git ignored
+      cp_config_dir("git")
     
 
 
 # zsh
 def zsh():
     """Configuring zsh"""
-    os.environ["ZDOTDIR"] = os.path.expanduser("~/.config/zsh")
-    # copy .zshenv to home directory and overwrite if exists
-    # change default shell redirect password to stdin if zsh is not default shell
-    if os.environ["SHELL"] != "/bin/zsh":
-        execute("chsh -s /bin/zsh")
-    shutil.copyfile("configs/zshenv", os.path.expanduser("~/.zshenv"))
-    cp_config_dir("zsh")
+    if check_package("zsh"):
+      os.environ["ZDOTDIR"] = os.path.expanduser("~/.config/zsh")
+      # copy .zshenv to home directory and overwrite if exists
+      # change default shell redirect password to stdin if zsh is not default shell
+      if os.environ["SHELL"] != "/bin/zsh":
+          execute("chsh -s /bin/zsh")
+      shutil.copyfile("configs/zshenv", os.path.expanduser("~/.zshenv"))
+      cp_config_dir("zsh")
 
 
 def kitty():
     """Configure kitty"""
+    if check_package("kitty"):
     # copy kitty directory to ~/.config/kitty except if git ignored
-    cp_config_dir("kitty")
+      cp_config_dir("kitty")
 
 
 # lunarvim
 def lunarvim():
     """Configure lunarvim"""
-    # set environment variable
-    os.environ["LV_BRANCH"] = "rolling"
-    # install lunarvim
-    execute("./scripts/lunarvim.sh -y --install-dependencies")
-    # copy lunarvim directory to ~/.config/lunarvim except if git ignored
-    cp_config_dir("lvim")
+    if check_package("neovim"):
+      # set environment variable
+      os.environ["LV_BRANCH"] = "rolling"
+      # install lunarvim
+      execute("./scripts/lunarvim.sh -y --install-dependencies")
+      # copy lunarvim directory to ~/.config/lunarvim except if git ignored
+      cp_config_dir("lvim")
 
 
 # install and configure cargo
