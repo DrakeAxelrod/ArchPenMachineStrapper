@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=/bin/vmware-user-suid-wrapper.sh
+Exec=/bin/vmware-user-suid-wrapper.sh &
 GenericName[en_US]=
 GenericName=
 Icon=dialog-scripts

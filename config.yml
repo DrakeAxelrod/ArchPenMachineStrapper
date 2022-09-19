@@ -30,7 +30,7 @@ packages:
     - vulscan # Nmap NSE script for vulnerability scanning
     - metasploit # Penetration testing framework
     - wordlists # Wordlists for password cracking and other security testing
-    - burpsuite  # Web application security testing tool
+    - burpsuite # Web application security testing tool
     - burpsuite-pro # Burp Suite Professional
     - sqlmap # Automatic SQL injection and database takeover tool
     - gobuster # Directory/file, DNS and virtual host busting tool written in Go

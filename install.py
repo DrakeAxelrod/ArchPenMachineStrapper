@@ -126,13 +126,15 @@ def ulauncher():
 
 # configure git
 def git():
+    """Configure git"""
     # copy git directory to ~/.config/git except if git ignored
     cp_config_dir("git")
+    
 
 
 # zsh
 def zsh():
-    """configuring zsh"""
+    """Configuring zsh"""
     os.environ["ZDOTDIR"] = os.path.expanduser("~/.config/zsh")
     # copy .zshenv to home directory and overwrite if exists
     # change default shell redirect password to stdin if zsh is not default shell
