@@ -112,6 +112,16 @@ def systemd():
         execute("sudo systemctl enable " + service)
         execute("sudo systemctl start " + service)
 
+def scripts():
+    """Configure scripts"""
+    if not os.path.exists(os.path.expanduser("~/.local")):
+        os.mkdir(os.path.expanduser("~/.local"))
+    if not os.path.exists(os.path.expanduser("~/.local/bin")):
+        os.makedirs(os.path.expanduser("~/.local/bin"))
+    # copy all files in scripts to ~/.local/bin
+    for file in os.listdir("scripts"):
+        shutil.copy(f"scripts/{file}", os.path.expanduser("~/.local/bin"))
+    execute("chmod +x ~/.local/bin/*")
 
 def autostart_programs():
     # copy autostart directory to ~/.config/autostart except if git ignored
@@ -161,7 +171,7 @@ def lunarvim():
       # set environment variable
       os.environ["LV_BRANCH"] = "rolling"
       # install lunarvim
-      execute("./scripts/lunarvim.sh -y --install-dependencies")
+      execute("./installers/lunarvim.sh -y --install-dependencies")
       # copy lunarvim directory to ~/.config/lunarvim except if git ignored
       cp_config_dir("lvim")
 
@@ -180,7 +190,7 @@ def rust():
 
 
 # ======================== Main ======================== #
-
+      
 
 def pretty_print(msg, color="\033[92m"):
     """Print message in pretty format
@@ -198,6 +208,14 @@ def pretty_print(msg, color="\033[92m"):
 
 if __name__ == "__main__":
     global config
+    # to handle curl install
+    # python <(curl -s https://raw.githubusercontent.com/DrakeAxelrod/ArchPenMachineStrapper/main/install.py)
+    if not os.path.exists(".git"):
+      os.chdir("/tmp")
+      execute("git clone https://github.com/DrakeAxelrod/ArchPenMachineStrapper.git")
+      # cd to ArchPenMachineStrapper
+      os.chdir("ArchPenMachineStrapper")
+
     # start
     print("\033[96m" + banner + "\033[0m")
     config = read_config()
@@ -223,7 +241,7 @@ if __name__ == "__main__":
     pretty_print("Configuring system")
     systemd()
 
-    for func in [git, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty]:
+    for func in [scripts, git, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty]:
         config_wrapper(func)
 
     # install pentest tools
