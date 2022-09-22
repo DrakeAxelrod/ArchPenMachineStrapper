@@ -1,6 +1,5 @@
 [user]
-	# email = 
-	# name = 
+#
 [color]
   # Enable colors in color-supporting terminals
   ui = "auto"
@@ -32,25 +31,25 @@
   whitespace = "-trailing-space"
   # Auto-fetch submodule changes (sadly, won't auto-update)
   recurseSubmodules = "on-demand"
-	excludesFile = ~/.config/git/ignore
-; [mergetool "vscode"]
-;   cmd = code --wait $MERGED
-; [diff]
-;   # Use better, descriptive initials (c, i, w) instead of a/b.
-;   mnemonicPrefix = true
-;   # Show renames/moves as such
-;   renames = true
-;   # When using --word-diff, assume --word-diff-regex=.
-;   wordRegex = .
-;   # Display submodule-related information (commit listings)
-;   submodule = log
-;   # Use VSCode as default diff tool when running `git diff-tool`
-;   tool = vscode
-; [difftool "vscode"]
-;   cmd = code --wait --diff $LOCAL $REMOTE
+	excludesFile = "~/.config/git/ignore"
+# [mergetool "vscode"]
+#   cmd = "code --wait $MERGED"
+# [diff]
+#   # Use better, descriptive initials (c, i, w) instead of a/b.
+#   mnemonicPrefix = true
+#   # Show renames/moves as such
+#   renames = true
+#   # When using --word-diff, assume --word-diff-regex=.
+#   wordRegex = .
+#   # Display submodule-related information (commit listings)
+#   submodule = log
+#   # Use VSCode as default diff tool when running `git diff-tool`
+#   tool = vscode
+# [difftool "vscode"]
+#   cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
   # Auto-fetch submodule changes (sadly, won't auto-update)
-  recurseSubmodules = on-demand
+  recurseSubmodules = "on-demand"
 [grep]
   break = true
   heading = true
@@ -93,7 +92,7 @@
   # As this is an external tool it has to be installed.
   # See https://github.com/so-fancy/diff-so-fancy
   # show = diff-so-fancy | less --tabs=4 -RFX
-; [pull]
+# [pull]
   # This is GREAT… when you know what you're doing and are careful
   # not to pull --no-rebase over a local line containing a true merge.
   # rebase = true
@@ -102,10 +101,10 @@
   # rebase = preserve
   # WARNING! This option, which is the latest variation, is only
   # available from 2.18 onwards.
-  ; rebase = merges
+  # rebase = "merges"
 [push]
 # Default push should only push the current branch to its push target, regardless of its remote name
-  default = upstream
+  default = "upstream"
   # When pushing, also push tags whose commit-ishs are now reachable upstream
   followTags = true
 # [rebase]
@@ -126,21 +125,21 @@
   # Display submodule rev change summaries in status
   submoduleSummary = true
   # Recursively traverse untracked directories to display all contents
-  showUntrackedFiles = all
-[color "branch"]
+  showUntrackedFiles = "all"
+[color.branch]
   # Blue on black is hard to read in git branch -vv: use cyan instead
-  upstream = cyan
+  upstream = "cyan"
 [tag]
   # Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
-  sort = version:refname
-[versionsort]
-  prereleaseSuffix = -pre
-  prereleaseSuffix = .pre
-  prereleaseSuffix = -beta
-  prereleaseSuffix = .beta
-  prereleaseSuffix = -rc
-  prereleaseSuffix = .rc
-; [commit]
-  ; template = ~/.config/git/templates/gitmessage.txt
+  sort = "version:refname"
+# [versionsort]
+  # prereleaseSuffix = "-pre"
+  # prereleaseSuffix = ".pre"
+  # prereleaseSuffix = "-beta"
+  # prereleaseSuffix = ".beta"
+  # prereleaseSuffix = "-rc"
+  # prereleaseSuffix = ".rc"
+# [commit]
+  # template = "~/.config/git/templates/gitmessage.txt"
 [safe]
-	directory = /opt/flutter
+	directory = "/opt/flutter"

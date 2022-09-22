@@ -1,4 +1,7 @@
 package_manager: yay # or "paru"
+git:
+  user: ""
+  email: ""
 systemd_services:
   - vmtoolsd # VMware Tools
   - vmware-vmblock-fuse # VMware Tools
