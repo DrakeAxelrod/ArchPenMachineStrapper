@@ -142,25 +142,25 @@ def git():
       # copy git directory to ~/.config/git except if git ignored
       cp_config_dir("git")
     
-    # check if config has git.email and git.name are empty strings
-    if config["git"]["email"] == "" or config["git"]["name"] == "":
-        print(">> git email and name not configured")
-        # ask if user wants to provide git email and name in red
-        print("\033[91m>> do you want to provide git email and name? [y/n]\033[0m")
-        ans = input().lower()
-        if ans == "y":
-            # ask for git email and name
-            print(">> enter git email")
-            email = input()
-            print(">> enter git name")
-            name = input()
-            # set git email and name
-            execute(f"git config --global user.email {email}")
-            execute(f"git config --global user.name {name}")
-    else:
-      # set git email and name
-      execute("git config --global user.email " + config["git"]["email"])
-      execute("git config --global user.name " + config["git"]["name"])
+      # check if config has git.email and git.name are empty strings
+      if config["git"]["email"] == "" or config["git"]["name"] == "":
+          print(">> git email and name not configured")
+          # ask if user wants to provide git email and name in red
+          print("\033[91m>> do you want to provide git email and name? [y/n]\033[0m", end=" ")
+          ans = input().lower()
+          if ans == "y":
+              # ask for git email and name
+              print(">> enter git email", end=": ")
+              email = input()
+              print(">> enter git name", end=": ")
+              name = input()
+              # set git email and name
+              execute(f"git config --global user.email {email}")
+              execute(f"git config --global user.name {name}")
+      else:
+        # set git email and name
+        execute("git config --global user.email " + config["git"]["email"])
+        execute("git config --global user.name " + config["git"]["name"])
 
 
 # zsh
@@ -170,10 +170,8 @@ def zsh():
     if check_package("zsh"):
       os.environ["ZDOTDIR"] = os.path.expanduser("~/.config/zsh")
       os.environ["ZPLUG_HOME"] = os.path.expanduser("~/.config/zsh/zplug")
-      # zplug
-      execute("curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh")
-      # starship
-      execute("sh <(curl -fsSL https://starship.rs/install.sh) -y")
+      # zsh libs
+      execute("zsh ./installers/zsh.sh")
       # copy .zshenv to home directory and overwrite if exists
       # change default shell redirect password to stdin if zsh is not default shell
       if os.environ["SHELL"] != "/bin/zsh":
@@ -233,14 +231,6 @@ def pretty_print(msg, color="\033[92m"):
 
 if __name__ == "__main__":
     global config
-    # to handle curl install
-    # bash <(curl -s https://raw.githubusercontent.com/DrakeAxelrod/ArchPenMachineStrapper/main/installers/curl_install.sh)
-    # if not os.path.exists(".git"):
-    #   os.chdir("/tmp")
-    #   execute("git clone https://github.com/DrakeAxelrod/ArchPenMachineStrapper.git")
-    #   # cd to ArchPenMachineStrapper
-    #   os.chdir("ArchPenMachineStrapper")
-
     # start
     print("\033[96m" + banner + "\033[0m")
     config = read_config()
