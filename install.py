@@ -166,8 +166,14 @@ def git():
 # zsh
 def zsh():
     """Configuring zsh"""
+    # install zplug
     if check_package("zsh"):
       os.environ["ZDOTDIR"] = os.path.expanduser("~/.config/zsh")
+      os.environ["ZPLUG_HOME"] = os.path.expanduser("~/.config/zsh/zplug")
+      # zplug
+      execute("curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh")
+      # starship
+      execute("sh <(curl -fsSL https://starship.rs/install.sh) -y")
       # copy .zshenv to home directory and overwrite if exists
       # change default shell redirect password to stdin if zsh is not default shell
       if os.environ["SHELL"] != "/bin/zsh":

@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
-if ! [ -x "$(command -v zplug)" ]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-
-
 source "$ZPLUG_HOME/init.zsh"
+
+# if [ -x "$(command -v zplug)" ]; then
+#   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+#   source "$ZPLUG_HOME/init.zsh"
+# fi
 
 # # Syntax highlighting bundle.
 zplug zsh-users/zsh-syntax-highlighting
