@@ -210,11 +210,11 @@ if __name__ == "__main__":
     global config
     # to handle curl install
     # python <(curl -s https://raw.githubusercontent.com/DrakeAxelrod/ArchPenMachineStrapper/main/install.py)
-    if not os.path.exists(".git"):
-      os.chdir("/tmp")
-      execute("git clone https://github.com/DrakeAxelrod/ArchPenMachineStrapper.git")
-      # cd to ArchPenMachineStrapper
-      os.chdir("ArchPenMachineStrapper")
+    # if not os.path.exists(".git"):
+    #   os.chdir("/tmp")
+    #   execute("git clone https://github.com/DrakeAxelrod/ArchPenMachineStrapper.git")
+    #   # cd to ArchPenMachineStrapper
+    #   os.chdir("ArchPenMachineStrapper")
 
     # start
     print("\033[96m" + banner + "\033[0m")
