@@ -29,6 +29,9 @@ packages:
     - rustup # Rust toolchain installer
     - visual-studio-code-bin # Visual Studio Code
     - docker # Docker
+    - texlive-core # TeX Live
+    - texlive-latexextr # Extra LaTeX tools
+    - latex-mk # LaTeX build tool
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning
@@ -52,3 +55,4 @@ packages:
     - net-tools # Collection of common network tools
     - traceroute # Traces the route taken by packets over an IP network
     - iputils # Collection of small useful utilities for Linux networking
+    - nessus # Vulnerability scanner

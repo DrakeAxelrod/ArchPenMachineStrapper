@@ -1,4 +1,5 @@
 import subprocess
+import sys
 import yaml
 import shutil
 import os
@@ -194,7 +195,7 @@ def lunarvim():
       # set environment variable
       os.environ["LV_BRANCH"] = "rolling"
       # install lunarvim
-      execute("./installers/lunarvim.sh -y --install-dependencies")
+      execute("LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh) -y --install-dependencies")
       # copy lunarvim directory to ~/.config/lunarvim except if git ignored
       cp_config_dir("lvim")
 
@@ -233,7 +234,16 @@ if __name__ == "__main__":
     global config
     # start
     print("\033[96m" + banner + "\033[0m")
-    config = read_config()
+    # check if command line arguments for config file is provided
+    if len(sys.argv) > 1:
+        # check if config file exists
+        if os.path.exists(sys.argv[1]):
+            # read config file
+            config = yaml.load(open(sys.argv[1]), Loader=yaml.FullLoader)
+        else:
+            # print error message and exit
+            print("\033[91m>> config file not provided using default\033[0m")
+            config = read_config()
     # update system and mirrorlist
     # pretty_print(
     #     "Performing system update and mirrorlist update please do not exit",
