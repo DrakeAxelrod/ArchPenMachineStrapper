@@ -240,10 +240,11 @@ if __name__ == "__main__":
         if os.path.exists(sys.argv[1]):
             # read config file
             config = yaml.load(open(sys.argv[1]), Loader=yaml.FullLoader)
-        else:
-            # print error message and exit
-            print("\033[91m>> config file not provided using default\033[0m")
-            config = read_config()
+    else:
+        # print error message and exit
+        print("\033[91mconfig file not provided using default\033[0m")
+        print()
+        config = read_config()
     # update system and mirrorlist
     # pretty_print(
     #     "Performing system update and mirrorlist update please do not exit",

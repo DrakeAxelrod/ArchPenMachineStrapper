@@ -30,8 +30,8 @@ packages:
     - visual-studio-code-bin # Visual Studio Code
     - docker # Docker
     - texlive-core # TeX Live
-    - texlive-latexextr # Extra LaTeX tools
     - latex-mk # LaTeX build tool
+    - flameshot # Screenshot tool
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning
