@@ -108,10 +108,11 @@ def systemd():
     """Configure systemd"""
     global config
     # enable systemd services
-    for service in config["systemd_services"]:
-        print(f">> configuring service [{service}]")
-        execute("sudo systemctl enable " + service)
-        execute("sudo systemctl start " + service)
+    if config["systemd"]["enable"] != []:
+      for service in config["systemd_services"]:
+          print(f">> configuring service [{service}]")
+          execute("sudo systemctl enable " + service)
+          execute("sudo systemctl start " + service)
 
 def scripts():
     """Configure scripts"""
@@ -258,9 +259,10 @@ if __name__ == "__main__":
       print(">> skipping update")
 
     # install packages green
-    pretty_print("Installing general packages")
-    for package in config["packages"]["general"]:
-        install_package(package)
+    if config["packages"] != [] and config["packages"]["general"] != []:
+      pretty_print("Installing general packages")
+      for package in config["packages"]["general"]:
+          install_package(package)
 
     # configuring system
 
@@ -271,6 +273,7 @@ if __name__ == "__main__":
         config_wrapper(func)
 
     # install pentest tools
-    pretty_print("Installing pentest tools")
-    for package in config["packages"]["pentest_tools"]:
-        install_package(package)
+    if config["packages"] != [] and config["packages"]["pentest"] != []:
+      pretty_print("Installing pentest tools")
+      for package in config["packages"]["pentest_tools"]:
+          install_package(package)
