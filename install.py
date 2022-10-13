@@ -237,6 +237,7 @@ if __name__ == "__main__":
     print("\033[96m" + banner + "\033[0m")
     # check if command line arguments for config file is provided
     if len(sys.argv) > 1:
+        print(">> using config file: " + sys.argv[1])
         # check if config file exists
         if os.path.exists(sys.argv[1]):
             # read config file
