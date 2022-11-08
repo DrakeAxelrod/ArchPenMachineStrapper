@@ -1,5 +1,6 @@
 -- vim settings
 vim.o.cmdheight = 1
+vim.o.timeoutlen = 300
 -- general lvim settings
 lvim.log.level = "warn"
 lvim.format_on_save = true
@@ -21,7 +22,7 @@ lvim.builtin.alpha.active = true
 --   [[ (  /  |        / | \                                * .  ' .  .-+- ]],
 --   ([[  \(_)_%s      /  |  \                           *   *  .   .       ]]):format("]]"),
 -- }
-lvim.builtin.notify.active = true
+-- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false

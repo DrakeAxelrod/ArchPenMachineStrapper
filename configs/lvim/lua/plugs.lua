@@ -2,6 +2,7 @@ lvim.plugins = {
   { "j-hui/fidget.nvim",
     event = { "BufWinEnter", "BufRead", "BufReadPre" },
     config = function()
+      local fidget = require("fidget")
       fidget.setup({
         text = {
           spinner = "pipe", -- animation shown when tasks are ongoing
