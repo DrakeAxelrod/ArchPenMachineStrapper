@@ -219,6 +219,7 @@ fi
 if cmd_exists lazygit; then
   alias lg="lazygit"
 fi
+alias commit="git add . && git commit -m "drake update" && git push"
 
 # graphics
 alias display_driver="lspci -k | grep -EA3 'VGA|3D|Display'"
