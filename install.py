@@ -52,7 +52,7 @@ def check_package(package) -> bool:
     global config
     # check if error code then package is not installed
     try:
-        execute(config["package_manager"] + " -Q " + package + " > /dev/null")
+        execute(config["package_manager"] + " -Q " + package + " &> /dev/null")
         return True
     except:
         return False
@@ -108,11 +108,13 @@ def systemd():
     """Configure systemd"""
     global config
     # enable systemd services
-    if config["systemd"]["enable"] != []:
-      for service in config["systemd_services"]:
-          print(f">> configuring service [{service}]")
-          execute("sudo systemctl enable " + service)
-          execute("sudo systemctl start " + service)
+    # check if config has key systemd
+    if "systemd" in config:
+      if "enable" in config["systemd"]:
+        for service in config["systemd_services"]:
+            print(f">> configuring service [{service}]")
+            execute("sudo systemctl enable " + service)
+            execute("sudo systemctl start " + service)
 
 def scripts():
     """Configure scripts"""
@@ -140,7 +142,8 @@ def ulauncher():
 # configure git
 def git():
     """Configure git"""
-    if check_package("git"):
+    # check if .config/git/config exists
+    if not os.path.exists(os.path.expanduser("~/.config/git")) and check_package("git"):
       # copy git directory to ~/.config/git except if git ignored
       cp_config_dir("git")
     
@@ -263,10 +266,11 @@ if __name__ == "__main__":
       print(">> skipping update")
 
     # install packages green
-    if config["packages"] != [] and config["packages"]["general"] != []:
-      pretty_print("Installing general packages")
-      for package in config["packages"]["general"]:
-          install_package(package)
+    if "packages" in config:
+      if "general" in config["packages"]:
+        pretty_print("Installing general packages")
+        for package in config["packages"]["general"]:
+            install_package(package)
 
     # configuring system
 
@@ -277,7 +281,8 @@ if __name__ == "__main__":
         config_wrapper(func)
 
     # install pentest tools
-    if config["packages"] != [] and config["packages"]["pentest"] != []:
-      pretty_print("Installing pentest tools")
-      for package in config["packages"]["pentest_tools"]:
-          install_package(package)
+    if "packages" in config and config["pentest_setup"] == True:
+      if "pentest_tools" in config["packages"]:
+        pretty_print("Installing pentest tools")
+        for package in config["packages"]["pentest_tools"]:
+            install_package(package)

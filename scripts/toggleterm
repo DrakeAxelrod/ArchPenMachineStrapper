@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# "Show-Hide" terminal wrapper for terminator for use with keybind eg. super + enter.
+# Depending on actual state it will start, show or hide terminal window.
+
+ID=$(wmctrl -lx | grep toggleterm | awk '{print $1}' | head -n 1)
+
+if [ -z "${ID}" ]; then
+  # alacritty --class toggleterm
+  # env -u WAYLAND_DISPLAY alacritty --class toggleterm
+  kitty --class toggleterm
+  #gnome-terminal --class toggleterm
+else
+  ID_DEC=$((${ID}))
+  ACTIVE_WIN_DEC=$(xdotool getactivewindow)
+  if [ "${ACTIVE_WIN_DEC}" == "${ID_DEC}" ]; then
+    xdotool windowminimize ${ID_DEC}
+  else
+    xdotool windowactivate ${ID_DEC}
+  fi
+fi
+
+unset ID
+unset ID_DEC
+unset ACTIVE_WIN_DEC

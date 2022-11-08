@@ -1,4 +1,5 @@
 package_manager: yay # or "paru"
+pentest_setup: true
 git:
   user: ""
   email: ""
@@ -32,6 +33,11 @@ packages:
     - texlive-core # TeX Live
     - latex-mk # LaTeX build tool
     - flameshot # Screenshot tool
+    - xdotool # Command-line X11 automation tool
+    - xclip # Command line interface to the X11 clipboard
+    - xsel # Command-line program for getting and setting the contents of the X selection
+    - xorg-xset # X.Org X server settings program
+    - wmctrl # Command line tool to interact with an EWMH/NetWM compatible X Window Manager
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning

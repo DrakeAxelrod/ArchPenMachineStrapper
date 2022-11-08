@@ -1,0 +1,52 @@
+#!/bin/bash
+# Tiny colored fetch script
+# Requires Typicons Font to display the icons
+# elenapan @ github
+# ip addr | awk '/state UP/ {print $2}' | sed 's/.$//'
+LANIFACE="$(ip route get 1.1.1.1 | grep -Po '(?<=dev\s)\w+' | cut -f1 -d ' ')"
+LANIP="$(ip addr show "$LANIFACE" | grep "inet " | cut -d '/' -f1 | cut -d ' ' -f6)"
+
+f=3 b=4
+for j in f b; do
+  for i in {0..7}; do
+    printf -v $j$i %b "\e[${!j}${i}m"
+  done
+done
+d=$'\e[1m'
+t=$'\e[0m'
+v=$'\e[7m'
+
+# Items
+sep=""
+s=$d$f0$sep$t
+
+w=" "
+wifiname="$LANIFACE - $LANIP"
+
+h=" "
+wmname="$(wmctrl -m | grep Class | awk '{print $2}')"
+
+k="﫵 "
+# kernel="$(uname -r)"
+kernel="$(cat /etc/os-release | grep "PRETTY_NAME" | sed 's/PRETTY_NAME=//g' | sed 's/["]//g' | awk '{print $1}')"
+
+
+r=" "
+resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
+
+sh=" "
+shell=$(basename $SHELL)
+
+colorpanes="$(colorpanes)"
+
+tput clear
+cat << EOF
+
+             $d$f1$h  $t$wmname
+   (\ /)     $f3$k  $t$kernel
+   ( $d. .$t)    $f2$sh  $t$shell
+   c($f1"$t)($f1"$t)   $f5$r  $t$resolution
+             $f4$w  $t$wifiname
+  $colorpanes
+
+EOF

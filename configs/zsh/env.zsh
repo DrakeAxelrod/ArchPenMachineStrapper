@@ -134,6 +134,9 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+# KDE
+export PLASMA_USE_QT_SCALING=1
+
 # path
 pathmunge "$HOME/.local/bin"
 pathmunge "$XDG_DATA_HOME/cargo/bin"
