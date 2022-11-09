@@ -8,20 +8,20 @@ lvim.colorscheme = "onedarker"
 lvim.leader = "space"
 -- builtin plugin settings
 lvim.builtin.alpha.active = true
--- lvim.builtin.alpha.mode = "dashboard"
--- lvim.builtin.alpha.dashboard.section.header.val = {
---   [[           _                                  _                     ]],
---   [[          | |                                (_)                    ]],
---   [[          | |    _   _ _ __   __ _ _ ____   ___ _ __ ___            ]],
---   [[          | |   | | | | '_ \ / _` | '__\ \ / / | '_ ` _ \           ]],
---   [[          | |___| |_| | | | | (_| | |   \ V /| | | | | | |          ]],
---   [[          \_____/\__,_|_| |_|\__,_|_|    \_/ |_|_| |_| |_|          ]],
---   [[      .-.      _______                           .  '  *   .  . '   ]],
---   [[     {}``; |==|_______D                                . *  -+-  .  ]],
---   [[     / ('        /|\                             . '   * .    '  *  ]],
---   [[ (  /  |        / | \                                * .  ' .  .-+- ]],
---   ([[  \(_)_%s      /  |  \                           *   *  .   .       ]]):format("]]"),
--- }
+lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.alpha.dashboard.section.header.val = {
+  [[           _                                  _                     ]],
+  [[          | |                                (_)                    ]],
+  [[          | |    _   _ _ __   __ _ _ ____   ___ _ __ ___            ]],
+  [[          | |   | | | | '_ \ / _` | '__\ \ / / | '_ ` _ \           ]],
+  [[          | |___| |_| | | | | (_| | |   \ V /| | | | | | |          ]],
+  [[          \_____/\__,_|_| |_|\__,_|_|    \_/ |_|_| |_| |_|          ]],
+  [[      .-.      _______                           .  '  *   .  . '   ]],
+  [[     {}``; |==|_______D                                . *  -+-  .  ]],
+  [[     / ('        /|\                             . '   * .    '  *  ]],
+  [[ (  /  |        / | \                                * .  ' .  .-+- ]],
+  ([[  \(_)_%s      /  |  \                           *   *  .   .       ]]):format("]]"),
+}
 -- lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
