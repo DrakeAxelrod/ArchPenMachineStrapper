@@ -234,7 +234,8 @@ def kde_settings():
     # extract ./oreo-spark-red-cursor.tar.gz to ~/.local/share/icons
     if not os.path.exists(os.path.expanduser("~/.local/share/icons")):
         os.makedirs(os.path.expanduser("~/.local/share/icons"))
-    execute("tar -xf ./oreo-spark-red-cursor.tar.gz -C ~/.local/share/icons")
+    # extract oreo-spark-red-cursors.tar.gz to ~/.local/share/icons
+    execute("tar -xf ./oreo-spark-red-cursors.tar.gz -C ~/.local/share/icons")
     # copy kglobalshortcutsrc to ~/.config/kglobalshortcutsrc, kdeglobals to ~/.config/kdeglobals, khotkeysrc to ~/.config/khotkeysrc
     shutil.copyfile("configs/kglobalshortcutsrc", os.path.expanduser("~/.config/kglobalshortcutsrc"))
     # copy kdeglobals to ~/.config/kdeglobals
@@ -287,9 +288,10 @@ if __name__ == "__main__":
     #     "Performing system update and mirrorlist update please do not exit",
     #     "\033[91m")
     # ask if user wants to update system and mirrors
-    if "update_mirrorlist" in config and config["update_mirrorlist"]:
-        print(">> updating mirrorlist")
-        update_mirrorlist()
+    if "update_mirrorlist" in config:
+      if config["update_mirrorlist"]:
+          print(">> updating mirrorlist")
+          update_mirrorlist()
     else:
       print("\033[91m" + "do you want to update system and mirrors? [y/n]" + "\033[0m", end=" ")
       ans = input().lower()
