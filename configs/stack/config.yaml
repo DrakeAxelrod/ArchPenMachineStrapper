@@ -1,0 +1,9 @@
+# For more information about stack's configuration, see
+# http://docs.haskellstack.org/en/stable/yaml_configuration/
+#
+packages: []
+resolver:
+  filepath: resolver
+color: always
+system-ghc: true
+install-ghc: false

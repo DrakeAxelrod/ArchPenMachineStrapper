@@ -40,8 +40,6 @@ packages:
     - xorg-xset # X.Org X server settings program
     - wmctrl # Command line tool to interact with an EWMH/NetWM compatible X Window Manager
     - ghcup-hs-bin # Haskell toolchain installer
-    - cabal-install # Haskell build tool
-    - stack # Haskell build tool
     - ncurses5-compat-libs # Compatibility libraries for ncurses 5
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
@@ -54,6 +52,7 @@ packages:
     - gobuster # Directory/file, DNS and virtual host busting tool written in Go
     - dirb # Web Content Scanner
     - dirbuster # Web Content Scanner
+    - feroxbuster # Fast, simple, recursive content discovery tool written in Rust
     - nikto # Web server scanner which performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files/programs
     - nessus # Vulnerability scanner
     - wpscan # WordPress vulnerability scanner

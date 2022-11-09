@@ -385,3 +385,12 @@ function short_pwd() {
     echo -n $cwd
 }
 export SPWD="$(short_pwd)"
+
+function wordlists() {
+  if [ -z "$1" ]; then
+    echo "Usage: show_wordlists <wordlist>"
+    ls /usr/share/wordlists
+    return 1
+  fi
+  lt -1 /usr/share/wordlists/$1*
+}

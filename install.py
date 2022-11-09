@@ -223,8 +223,8 @@ def gnupg():
 
 def haskell():
     """Configure haskell"""
-    # copy haskell directory to ~/.config/haskell except if git ignored
     cp_config_dir("cabal")
+    cp_config_dir("stack")
 
 def kde_settings():
     """Configure kde settings"""
@@ -244,8 +244,31 @@ def kde_settings():
     shutil.copyfile("configs/khotkeysrc", os.path.expanduser("~/.config/khotkeysrc"))
     cp_config_dir("kdedefaults")
 
+def docs():
+    """Configure docs"""
+    # git clone --recursive https://github.com/jekil/awesome-hacking.git into ~/Documents/resources
+    if not os.path.exists(os.path.expanduser("~/Documents/resources")):
+        os.makedirs(os.path.expanduser("~/Documents/resources"))
+    execute("git clone --recursive https://github.com/jekil/awesome-hacking.git ~/Documents/resources/awesome-hacking")
+    # cp all files and directories in ./Documents to ~/Documents/resources
+    for file in os.listdir("Documents"):
+        if os.path.isdir("Documents/" + file):
+            shutil.copytree("Documents/" + file, os.path.expanduser("~/Documents/resources/" + file))
+        else:
+            shutil.copyfile("Documents/" + file, os.path.expanduser("~/Documents/resources/" + file))
 
 
+# https://github.com/trimstray/sandmap
+def sandmap():
+  # # Clone this repository
+  # git clone --recursive https://github.com/trimstray/sandmap
+  # # Go into the repository
+  # cd sandmap
+  # # Install
+  # ./setup.sh install
+  # # Run the app
+  # sandmap
+  pass
 # ======================== Main ======================== #
       
 
@@ -312,7 +335,7 @@ if __name__ == "__main__":
     pretty_print("Configuring system")
     systemd()
 
-    for func in [scripts, git, gnupg, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty, kde_settings, haskell]:
+    for func in [scripts, git, gnupg, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty, kde_settings, docs]:
         config_wrapper(func)
 
     # install pentest tools
