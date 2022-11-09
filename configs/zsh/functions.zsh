@@ -259,7 +259,11 @@ FZF-EOF"
 
 function lazycommit() {
   git add -A
-  git commit -m "$1"
+  if [ -z "$1" ]; then
+    git commit -m "lazy commit"
+  else
+    git commit -m "$1"
+  fi
   git push
 }
 
