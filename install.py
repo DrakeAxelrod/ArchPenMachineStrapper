@@ -252,7 +252,8 @@ if __name__ == "__main__":
         print()
         config = read_config()
 
-    print(config)
+    # print(config)
+    
     # update system and mirrorlist
     # pretty_print(
     #     "Performing system update and mirrorlist update please do not exit",

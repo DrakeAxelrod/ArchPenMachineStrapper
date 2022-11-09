@@ -18,7 +18,7 @@ fi
 # check if imwheel is not running
 if [[ -z $(pgrep imwheel) ]]; then
   # start imwheel
-  imwheel -k
+  imwheel -k &> /dev/null &
 fi
 
 
