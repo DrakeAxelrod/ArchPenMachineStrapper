@@ -1,6 +1,5 @@
 package_manager: yay # or "paru"
 pentest_setup: true
-update_mirrorlist: false
 git:
   user: ""
   email: ""
@@ -42,6 +41,7 @@ packages:
     - ghcup-hs-bin # Haskell toolchain installer
     - ncurses5-compat-libs # Compatibility libraries for ncurses 5
   pentest_tools:
+    - proxychains-ng # Proxychains
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning
     - metasploit # Penetration testing framework
@@ -66,3 +66,4 @@ packages:
     - traceroute # Traces the route taken by packets over an IP network
     - iputils # Collection of small useful utilities for Linux networking
     - nessus # Vulnerability scanner
+    # - aquatone # A Tool for Domain Flyovers
