@@ -257,6 +257,12 @@ function git_log() {
 FZF-EOF"
 }
 
+function lazycommit() {
+  git add -A
+  git commit -m "$1"
+  git push
+}
+
 # just fun
 # function flip() { echo -n "（╯°□°）╯ ┻━┻\n" |tee /dev/tty| xclip -selection clipboard; }
 # function disappointed() { echo -n " ಠ_ಠ \n" |tee /dev/tty| xclip -selection clipboard; }
