@@ -231,6 +231,10 @@ def kde_settings():
     # /home/test/.local/share/plasma/look-and-feel
     # extract ./Utterly-Nord.tar.xz to ~/.local/share/plasma/look-and-feel
     execute("tar -xf ./Utterly-Nord.tar.xz -C ~/.local/share/plasma/look-and-feel")
+    # extract ./oreo-spark-red-cursor.tar.gz to ~/.local/share/icons
+    if not os.path.exists(os.path.expanduser("~/.local/share/icons")):
+        os.makedirs(os.path.expanduser("~/.local/share/icons"))
+    execute("tar -xf ./oreo-spark-red-cursor.tar.gz -C ~/.local/share/icons")
     # copy kglobalshortcutsrc to ~/.config/kglobalshortcutsrc, kdeglobals to ~/.config/kdeglobals, khotkeysrc to ~/.config/khotkeysrc
     shutil.copyfile("configs/kglobalshortcutsrc", os.path.expanduser("~/.config/kglobalshortcutsrc"))
     # copy kdeglobals to ~/.config/kdeglobals
