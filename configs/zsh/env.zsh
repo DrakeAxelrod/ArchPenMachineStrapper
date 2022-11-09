@@ -142,6 +142,7 @@ export GHCUP_USE_XDG_DIRS=1
 export GHCUP_INSTALL_BASE_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
 export CABAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/cabal/config"
 export CABAL_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/cabal"
+export STACK_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/stack"
 
 # path
 pathmunge "$HOME/.local/bin"
@@ -151,3 +152,4 @@ pathmunge "$GOPATH/bin"
 pathmunge "$PYENV_ROOT/bin"
 pathmunge "$GHCUP_INSTALL_BASE_PREFIX/bin"
 pathmunge "$CABAL_DIR/bin"
+pathmunge "$STACK_ROOT/bin"

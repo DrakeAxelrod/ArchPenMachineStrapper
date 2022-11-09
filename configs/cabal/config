@@ -1,0 +1,5 @@
+ library-vanilla: False
+shared: True
+executable-dynamic: True
+program-default-options
+  ghc-options: -dynamic
