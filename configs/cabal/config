@@ -1,4 +1,6 @@
- library-vanilla: False
+repository hackage.haskell.org
+  url: http://hackage.haskell.org/
+library-vanilla: False
 shared: True
 executable-dynamic: True
 program-default-options
