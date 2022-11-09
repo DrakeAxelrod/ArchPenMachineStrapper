@@ -138,7 +138,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export PLASMA_USE_QT_SCALING=1
 
 # haskell
-export GHCUP_USE_XDG_DIRS=1
+# export GHCUP_USE_XDG_DIRS=1
 export GHCUP_INSTALL_BASE_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/ghcup"
 export CABAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/cabal/config"
 export CABAL_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/cabal"

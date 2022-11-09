@@ -39,7 +39,7 @@ packages:
     - xsel # Command-line program for getting and setting the contents of the X selection
     - xorg-xset # X.Org X server settings program
     - wmctrl # Command line tool to interact with an EWMH/NetWM compatible X Window Manager
-    - ghcup # Haskell toolchain installer
+    - ghcup-hs-bin # Haskell toolchain installer
     - cabal-install # Haskell build tool
     - stack # Haskell build tool
     - ncurses5-compat-libs # Compatibility libraries for ncurses 5

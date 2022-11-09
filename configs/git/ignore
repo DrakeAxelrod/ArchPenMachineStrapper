@@ -15,7 +15,7 @@ log/
 *.log
 
 # Files
-*.gz
+; *.gz
 *.tmproj
 *.7z
 
