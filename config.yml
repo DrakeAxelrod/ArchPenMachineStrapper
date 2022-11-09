@@ -1,5 +1,6 @@
 package_manager: yay # or "paru"
 pentest_setup: true
+update_mirrorlist: false
 git:
   user: ""
   email: ""
@@ -38,6 +39,10 @@ packages:
     - xsel # Command-line program for getting and setting the contents of the X selection
     - xorg-xset # X.Org X server settings program
     - wmctrl # Command line tool to interact with an EWMH/NetWM compatible X Window Manager
+    - ghcup # Haskell toolchain installer
+    - cabal-install # Haskell build tool
+    - stack # Haskell build tool
+    - ncurses5-compat-libs # Compatibility libraries for ncurses 5
   pentest_tools:
     - nmap # Network exploration tool and security / port scanner
     - vulscan # Nmap NSE script for vulnerability scanning

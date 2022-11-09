@@ -85,7 +85,7 @@ def cp_config_dir(directory) -> None:
                     dirs_exist_ok=True)
 
 
-def update():
+def update_mirrorlist():
     """Update system and install reflector if not installed and update mirrors"""
     global config
 
@@ -216,6 +216,30 @@ def rust():
     if os.path.exists(os.path.expanduser("~/.cargo")):
         shutil.rmtree(os.path.expanduser("~/.cargo"))
 
+def gnupg():
+    """Configure gnupg"""
+    # copy gnupg directory to ~/.config/gnupg except if git ignored
+    cp_config_dir("gnupg")
+
+def haskell():
+    """Configure haskell"""
+    # copy haskell directory to ~/.config/haskell except if git ignored
+    cp_config_dir("cabal")
+
+def kde_settings():
+    """Configure kde settings"""
+    # /home/test/.local/share/plasma/look-and-feel
+    # extract ./Utterly-Nord.tar.xz to ~/.local/share/plasma/look-and-feel
+    execute("tar -xf ./Utterly-Nord.tar.xz -C ~/.local/share/plasma/look-and-feel")
+    # copy kglobalshortcutsrc to ~/.config/kglobalshortcutsrc, kdeglobals to ~/.config/kdeglobals, khotkeysrc to ~/.config/khotkeysrc
+    shutil.copyfile("configs/kglobalshortcutsrc", os.path.expanduser("~/.config/kglobalshortcutsrc"))
+    # copy kdeglobals to ~/.config/kdeglobals
+    shutil.copyfile("configs/kdeglobals", os.path.expanduser("~/.config/kdeglobals"))
+    # copy khotkeysrc to ~/.config/khotkeysrc
+    shutil.copyfile("configs/khotkeysrc", os.path.expanduser("~/.config/khotkeysrc"))
+    cp_config_dir("kdedefaults")
+
+
 
 # ======================== Main ======================== #
       
@@ -253,18 +277,22 @@ if __name__ == "__main__":
         config = read_config()
 
     # print(config)
-    
+
     # update system and mirrorlist
     # pretty_print(
     #     "Performing system update and mirrorlist update please do not exit",
     #     "\033[91m")
     # ask if user wants to update system and mirrors
-    print("\033[91m" + "do you want to update system and mirrors? [y/n]" + "\033[0m", end=" ")
-    ans = input().lower()
-    if ans == "y" or ans == "yes":
-      update()
+    if "update_mirrorlist" in config and config["update_mirrorlist"]:
+        print(">> updating mirrorlist")
+        update_mirrorlist()
     else:
-      print(">> skipping update")
+      print("\033[91m" + "do you want to update system and mirrors? [y/n]" + "\033[0m", end=" ")
+      ans = input().lower()
+      if ans == "y" or ans == "yes":
+        update_mirrorlist()
+      else:
+        print(">> skipping update")
 
     # install packages green
     if "packages" in config:
@@ -278,7 +306,7 @@ if __name__ == "__main__":
     pretty_print("Configuring system")
     systemd()
 
-    for func in [scripts, git, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty]:
+    for func in [scripts, git, gnupg, zsh, rust, autostart_programs, ulauncher, lunarvim, kitty, kde_settings, haskell]:
         config_wrapper(func)
 
     # install pentest tools
